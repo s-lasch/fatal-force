@@ -167,7 +167,7 @@ def render_usa(df, year, state):
     options = {
         "title": {
             # "text": "USA Population Estimates (2012)",
-            "subtext": "Color scale based on average national deaths.",
+            # "subtext": "",
             "left": "right",
         },
         "tooltip": {
