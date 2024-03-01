@@ -96,73 +96,42 @@ def validate_state(df, year, state):
         st.error('Please select a valid state.')
 
 def race_plot(df, year, state):
-    # filter by year
     df = validate_state(df, year, state)
 
-    # create a dataframe of shootings per race
-    cities = (df.value_counts(['Race'])
-              .to_frame()
-              .reset_index()
-              )
-
-    # must be in ascending order for the bar chart
-    cities = cities.sort_values(by='count')
+    # must be in ascending order for the bar plot
+    race = df.value_counts(['Race']).to_frame().reset_index().sort_values(by='count')
 
     bar = (
         Bar()
-        .add_xaxis(list(cities['Race']))
+        .add_xaxis(list(race['Race']))
+        .add_yaxis("Deaths", list(race['count']))
+        .reversal_axis()
+        .set_series_opts(label_opts=opts.LabelOpts(position="right"),
+                         itemstyle_opts=opts.ItemStyleOpts(border_radius=5))
+        .set_global_opts(legend_opts=opts.LegendOpts(is_show=False))
+    )
+
+    grid = Grid().add(bar, grid_opts=opts.GridOpts(pos_left='22%'))
+    return grid, race
+
+def cities_plot(df, year, state):
+    df = validate_state(df, year, state)
+
+    # must be in ascending order for the bar chart
+    cities = df.value_counts(['City', 'State']).to_frame().reset_index().head(10).sort_values(by='count')
+
+    bar = (
+        Bar()
+        .add_xaxis(list(cities['City']))
         .add_yaxis("Deaths", list(cities['count']))
         .reversal_axis()
         .set_series_opts(label_opts=opts.LabelOpts(position="right"),
                          itemstyle_opts=opts.ItemStyleOpts(border_radius=5))
-        .set_global_opts(
-            # title_opts=opts.TitleOpts(is_show=False),
-            legend_opts=opts.LegendOpts(is_show=False)
-            # toolbox_opts=opts.ToolboxOpts()
-        )
+        .set_global_opts(legend_opts=opts.LegendOpts(is_show=False))
     )
 
-    grid = (
-        Grid()
-        .add(bar, grid_opts=opts.GridOpts(pos_left='15%', pos_right='15%'))
-    )
-
+    grid = Grid().add(bar, grid_opts=opts.GridOpts(pos_left='15%', pos_right='15%'))
     return grid, cities
-
-def cities_plot(df, year, state):
-    # filter by year
-    df = validate_state(df, year, state)
-
-    # dataframe of top 10 cities
-    states = (df.value_counts(['City', 'State'])
-              .to_frame()
-              .reset_index()
-              .head(10)
-              )
-
-    # must be in ascending order for the bar chart
-    states = states.sort_values(by='count')
-
-    bar = (
-        Bar()
-        .add_xaxis(list(states['City']))
-        .add_yaxis("Deaths", list(states['count']))
-        .reversal_axis()
-        .set_series_opts(label_opts=opts.LabelOpts(position="right"),
-                         itemstyle_opts=opts.ItemStyleOpts(border_radius=5))
-        .set_global_opts(
-            # title_opts=opts.TitleOpts(is_show=False),
-            legend_opts=opts.LegendOpts(is_show=False)
-            # toolbox_opts=opts.ToolboxOpts()
-        )
-    )
-
-    grid = (
-        Grid()
-        .add(bar, grid_opts=opts.GridOpts(pos_left='15%', pos_right='15%'))
-    )
-
-    return grid, states
 
 def map_data(df, year, state):
     dff = validate_state(df, year, state)
@@ -176,6 +145,7 @@ def map_data(df, year, state):
 
     return states
 
+# TODO: See if this map can be implemented using the pyecharts API.
 def render_usa(df, year, state):
     formatter = JsCode(
         "function (params) {"

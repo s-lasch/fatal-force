@@ -26,6 +26,8 @@ from multiple sources.
 
 **2016–2021:**
 > [**Washington Post:** github.com/washingtonpost](https://github.com/washingtonpost/data-police-shootings)
+
+---
 """
 )
 
