@@ -83,6 +83,7 @@ with col1:
 
 with col2:
     st.markdown("#### U.S. Fatal Force")
+    st.markdown("*Color scale is based on the **average national death** amount.*")
     plots.render_usa(df, year, states)\
 
 col1, col2 = st.columns([2,.9])
