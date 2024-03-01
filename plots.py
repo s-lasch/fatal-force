@@ -98,7 +98,7 @@ def validate_state(df, year, state):
 def race_plot(df, year, state):
     df = validate_state(df, year, state)
 
-    # must be in ascending order for the bar plot
+    # must be in ascending order to render the bar plot
     race = df.value_counts(['Race']).to_frame().reset_index().sort_values(by='count')
 
     bar = (
@@ -117,7 +117,7 @@ def race_plot(df, year, state):
 def cities_plot(df, year, state):
     df = validate_state(df, year, state)
 
-    # must be in ascending order for the bar chart
+    # must be in ascending order to render the bar chart
     cities = df.value_counts(['City', 'State']).to_frame().reset_index().head(10).sort_values(by='count')
 
     bar = (
