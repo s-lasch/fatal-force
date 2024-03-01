@@ -79,7 +79,7 @@ col1, col2 = st.columns([1,1])
 
 with col1:
     st.markdown("#### Race Plot Chart")
-    st_pyecharts(race_grid, height='330px', width='100%', renderer='svg')
+    st_pyecharts(race_grid, height='335px', width='100%', renderer='svg')
 
 with col2:
     st.markdown("#### U.S. Fatal Force")
