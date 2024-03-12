@@ -13,7 +13,9 @@ def update(key, value):
         st.session_state[key] = value
 
 
-st.set_page_config(page_title="U.S. Fatal Force Data Analysis", layout="centered")
+st.set_page_config(page_title="U.S. Fatal Force Data Analysis",
+                   layout="centered",
+                   page_icon="magnifying-glass-chart-solid.svg")
 
 st.markdown(
 """
@@ -59,7 +61,8 @@ with st.expander("***Show a summary of the dataset***", expanded=False):
     st.dataframe(df.sort_values(by='Year', ascending=False),
                  use_container_width=True,
                  hide_index=True,
-                 column_config={'Year': st.column_config.NumberColumn("Year", format="%d")})
+                 column_config={'Year': st.column_config.NumberColumn("Year",
+                                                                      format="%d")})
 
 # define sidebar components
 st.sidebar.header('Data Selection')
@@ -79,7 +82,10 @@ col1, col2 = st.columns([1,1])
 
 with col1:
     st.markdown("#### Race Plot Chart")
-    st_pyecharts(race_grid, height='340px', width='100%', renderer='svg')
+    st_pyecharts(race_grid,
+                 height='340px',
+                 width='100%',
+                 renderer='svg')
 
 with col2:
     st.markdown("#### U.S. Fatal Force")
@@ -90,9 +96,15 @@ col1, col2 = st.columns([1,1])
 
 with col1:
     st.markdown("#### Cities Plot Chart")
-    st_pyecharts(cities_grid, height='500px', width='100%', renderer='svg')
+    st_pyecharts(cities_grid,
+                 height='500px',
+                 width='100%',
+                 renderer='svg')
 
 with col2:
     st.markdown("#### Cities Data")
     st.write("<br/><br/>", unsafe_allow_html=True)
-    st.dataframe(cities_output.sort_values('count', ascending=False), hide_index=True, use_container_width=True)
+    st.dataframe(cities_output.sort_values('count',
+                                           ascending=False),
+                 hide_index=True,
+                 use_container_width=True)
