@@ -111,7 +111,7 @@ def race_plot(df, year, state):
         .set_global_opts(legend_opts=opts.LegendOpts(is_show=False))
     )
 
-    grid = Grid().add(bar, grid_opts=opts.GridOpts(pos_left='22%', pos_top='25%'))
+    grid = Grid().add(bar, grid_opts=opts.GridOpts(pos_left='15%', pos_top='25%'))
     return grid, race
 
 def cities_plot(df, year, state):
@@ -130,7 +130,7 @@ def cities_plot(df, year, state):
         .set_global_opts(legend_opts=opts.LegendOpts(is_show=False))
     )
 
-    grid = Grid().add(bar, grid_opts=opts.GridOpts(pos_left='15%', pos_right='15%'))
+    grid = Grid().add(bar, grid_opts=opts.GridOpts(pos_left='15%'))
     return grid, cities
 
 def map_data(df, year, state):
