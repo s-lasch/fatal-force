@@ -21,7 +21,7 @@ st.markdown(
 """
 # U.S. Fatal Force
 In this dashboard, you will explore the data related to 21 years worth of [fatal force](https://www.wikiwand.com/en/Deadly_force#United_States_law:~:text=The%20United%20States%20Armed%20Forces%20defines%20deadly%20force%20as%20%22Force%20that%20is%20likely%20to%20cause%2C%20or%20that%20a%20person%20knows%20or%20should%20know%20would%20create%20a%20substantial%20risk%20of%20causing%2C%20death%20or%20serious%20bodily%20harm%20or%20injury.%22) in the United States from 2000 to 2021. The data was collected
-from multiple sources, cleaned, standardized, and then aggregated into a single file, which [can be found here](https://github.com/s-lasch/datasets/blob/main/police_fatalities.csv). 
+from multiple sources, cleaned, standardized, and then aggregated into a single file, which [can be found here](https://github.com/s-lasch/datasets/blob/main/fatalities_data.csv). 
 
 **2000–2016:**
 > [**Kaggle:** rishidamarla/individuals-killed-by-the-police](https://www.kaggle.com/datasets/rishidamarla/individuals-killed-by-the-police)
@@ -83,7 +83,7 @@ col1, col2 = st.columns([1,1])
 with col1:
     st.markdown("#### Race Plot Chart")
     st_pyecharts(race_grid,
-                 height='340px',
+                 height='400px',
                  width='100%',
                  renderer='svg')
 
