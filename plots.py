@@ -164,6 +164,7 @@ def render_usa(df, year, state):
                 # "Puerto Rico": {"left": -76, "top": 26, "width": 2},
             },
         )
+
     options = {
         "title": {
             # "text": "USA Population Estimates (2012)",

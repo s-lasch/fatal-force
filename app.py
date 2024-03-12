@@ -26,7 +26,7 @@ from multiple sources, cleaned, standardized, and then aggregated into a single 
 **2000–2016:**
 > [**Kaggle:** rishidamarla/individuals-killed-by-the-police](https://www.kaggle.com/datasets/rishidamarla/individuals-killed-by-the-police)
 
-**2016–2021:**
+**2015–2021:**
 > [**Washington Post:** github.com/washingtonpost](https://github.com/washingtonpost/data-police-shootings)
 
 ---
